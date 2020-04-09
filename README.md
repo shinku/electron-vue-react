@@ -10,9 +10,14 @@ import electron from 'electron'的方式增加即可
 ```
 + electron 运行时的代码放置在```src/main/```
 + vue的代码放置在```src/renderer/vue```
-+ react代码放置在```src/renderer/react``` 中
++ react代码放置在```src/renderer/react``` 
 
+renderer的webpack配置文件在config/webpack.render.js中
+
+main的webpack配置文件在 config/webpack.main.js中
 测试：
 ```yarn dev```
+
+
 打包
 ```yarn buildpack```
