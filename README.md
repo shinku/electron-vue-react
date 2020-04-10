@@ -7,15 +7,22 @@ renderer 中的electron 未通过挂载方式添加，只需通过
 ```
 import electron from 'electron'的方式增加即可
 ```
+####特点：
++ electron 项目热重载
++ 支持react/vue 以及混编（有点类似于微前端）
++ 支持typescript
+
+####源码大致结构
+
 + electron 运行时的代码放置在```src/main/```
 + vue的代码放置在```src/renderer/vue```
 + react代码放置在```src/renderer/react``` 
 
-renderer的webpack配置文件在config/webpack.render.js中
+renderer的webpack配置文件在```config/webpack.render.js```中
 
-main的webpack配置文件在 config/webpack.main.js中
+main的webpack配置文件在 ```config/webpack.main.js```中
 
-
+###CAMMAND
 测试：
 ```yarn dev```
 
