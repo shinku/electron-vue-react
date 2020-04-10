@@ -120,5 +120,11 @@ module.exports = {
 
 	devServer: {
 		open: false
-	}
+	},
+	resolve: {
+		alias: {
+		  '@': path.join(__dirname, '../src/main'),
+		},
+		extensions: ['.js', '.json', '.css', '.node',".ts"]
+	  },
 };
