@@ -8,6 +8,10 @@ import Reactapp from './react/app'
 
 import {ATest} from './ts/test.ts'
 
+
+let fs = require('fs');
+let path = require('path');
+console.log(path.resolve(__dirname,""));
 console.log({electron});
 console.log({ATest})
 new Vue({

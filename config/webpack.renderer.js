@@ -13,7 +13,7 @@ module.exports = {
 	entry: [path.join(process.cwd(),'./src/renderer/index.jsx')],
 	output: {
 		filename: 'renderer.js',
-		libraryTarget: 'commonjs2',
+		libraryTarget: 'umd',
 		path: path.join(process.cwd(),'./dist/electron/renderer'),
 		publicPath:''
 	},
