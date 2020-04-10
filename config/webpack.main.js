@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const baseConfig = require('./webpack.base')
 /*
  * SplitChunksPlugin is enabled by default and replaced
  * deprecated CommonsChunkPlugin. It automatically identifies modules which
@@ -25,6 +26,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
  */
 
 module.exports = {
+	...baseConfig,
 	target:"electron-main",
 	//mode: 'development',
 	entry: [path.join(process.cwd(),'./src/main/index.js')],
@@ -43,6 +45,31 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test:/.ts$/,
+				loader:'babel-loader',
+				include: [path.resolve(process.cwd(), 'src')],
+				
+				options:{
+					comments:false,
+					plugins: [
+						"@babel/plugin-transform-typescript",
+						["@babel/plugin-proposal-decorators",{ "legacy": true }]
+					],
+					presets:[
+						[
+							'@babel/preset-typescript',
+							{
+								//"useBuiltIns":"usage",
+								"targets": {
+									"node": "current"	
+								}
+							}
+						],
+						
+					]
+				}
+			},
+			{
 				test: /.js$/,
                 include: [path.resolve(process.cwd(), 'src')],
                 exclude: /node_modules/,
@@ -52,7 +79,8 @@ module.exports = {
 					comments:false,
 					plugins: [
 						'@babel/plugin-syntax-dynamic-import',
-						"@babel/plugin-transform-runtime"
+						"@babel/plugin-transform-runtime",
+						["@babel/plugin-proposal-decorators",{ "legacy": true }]
 					],
 					//corejs:"2",
 					//

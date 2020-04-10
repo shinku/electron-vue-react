@@ -2,11 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-
+const baseConfig = require('./webpack.base')
 
 
 
 module.exports = {
+	...baseConfig,
 	target:"electron-renderer",
 	//mode: 'development',
 	entry: [path.join(process.cwd(),'./src/renderer/index.jsx')],
@@ -35,6 +36,25 @@ module.exports = {
 	  },
 	module: {
 		rules: [
+			{
+				test:/.(ts|tsx)$/,
+				loader:'babel-loader',
+				include: [path.resolve(process.cwd(), 'src')],
+				options:{
+					comments:false,
+					plugins: [
+						"@babel/plugin-transform-typescript",
+						["@babel/plugin-proposal-decorators",{ "legacy": true }]
+					],
+					presets:[
+						//[
+							'@babel/preset-typescript',
+							"@babel/preset-react"
+						//],
+						
+					]
+				}
+			},
 			{
 				test: /\.js?$/,
                 include: [path.resolve(process.cwd(), 'src/renderer')],
@@ -144,6 +164,6 @@ module.exports = {
 		  '@': path.join(__dirname, '../src/renderer'),
 		  'vue$': 'vue/dist/vue.esm.js'
 		},
-		extensions: ['.js', '.vue', '.json', '.css', '.node','.jsx']
+		extensions: ['.js', '.vue', '.json', '.css', '.node','.jsx',".ts",".tsx"]
 	  },
 };

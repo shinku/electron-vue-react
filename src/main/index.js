@@ -1,16 +1,31 @@
 let electron = require('electron');
 let {app,BrowserWindow,dialog} = electron;
 let path = require('path');
+
+
+class Atest {
+  constructor(){
+    this.x=100;
+  }
+  @dec
+  showX(){
+    return this.x;
+  }
+}
+function dec (target,name,desp){
+  console.log({
+    target,name
+  });
+  return desp
+}
+let ob = new Atest();
+console.log(ob.showX());
+
 const WINURL = process.env.NODE_ENV=="development"?"http://localhost:1900/index.html":`file://${__dirname}/renderer/index.html`;
 console.log(process.env.NODE_ENV,__dirname);
 let mainWindow = null;
 function createWindow() {
- let fs = require('fs');
- let list = fs.readdirSync(__dirname);
- list =JSON.stringify(list)
-  dialog.showMessageBox(null,{
-    message:__dirname+"\n"+list
-  });
+
     mainWindow = new BrowserWindow({
       width: 1980,
       height: 1080,

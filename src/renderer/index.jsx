@@ -6,8 +6,10 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Reactapp from './react/app'
 
-console.log({electron});
+import {ATest} from './ts/test.ts'
 
+console.log({electron});
+console.log({ATest})
 new Vue({
     components: { App },
     template: '<App/>'
