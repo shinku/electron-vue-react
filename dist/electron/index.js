@@ -87,26 +87,14 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/@babel/runtime/helpers/applyDecoratedDescriptor.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/applyDecoratedDescriptor.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {\n  var desc = {};\n  Object.keys(descriptor).forEach(function (key) {\n    desc[key] = descriptor[key];\n  });\n  desc.enumerable = !!desc.enumerable;\n  desc.configurable = !!desc.configurable;\n\n  if ('value' in desc || desc.initializer) {\n    desc.writable = true;\n  }\n\n  desc = decorators.slice().reverse().reduce(function (desc, decorator) {\n    return decorator(target, property, desc) || desc;\n  }, desc);\n\n  if (context && desc.initializer !== void 0) {\n    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;\n    desc.initializer = undefined;\n  }\n\n  if (desc.initializer === void 0) {\n    Object.defineProperty(target, property, desc);\n    desc = null;\n  }\n\n  return desc;\n}\n\nmodule.exports = _applyDecoratedDescriptor;\n\n//# sourceURL=webpack:///./node_modules/@babel/runtime/helpers/applyDecoratedDescriptor.js?");
-
-/***/ }),
-
 /***/ "./src/main/index.js":
 /*!***************************!*\
   !*** ./src/main/index.js ***!
   \***************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(__dirname) {/* harmony import */ var _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/applyDecoratedDescriptor */ \"./node_modules/@babel/runtime/helpers/applyDecoratedDescriptor.js\");\n/* harmony import */ var _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_0__);\n\n\nvar _class;\n\nlet electron = __webpack_require__(/*! electron */ \"electron\");\n\nlet {\n  app,\n  BrowserWindow,\n  dialog\n} = electron;\n\nlet path = __webpack_require__(/*! path */ \"path\");\n\nlet Atest = (_class = class Atest {\n  constructor() {\n    this.x = 100;\n  }\n\n  showX() {\n    return this.x;\n  }\n\n}, (_babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, \"showX\", [dec], Object.getOwnPropertyDescriptor(_class.prototype, \"showX\"), _class.prototype)), _class);\n\nfunction dec(target, name, desp) {\n  console.log({\n    target,\n    name\n  });\n  return desp;\n}\n\nlet ob = new Atest();\nconsole.log(ob.showX());\nconst WINURL =  true ? \"http://localhost:1900/index.html\" : undefined;\nconsole.log(\"development\", __dirname);\nlet mainWindow = null;\n\nfunction createWindow() {\n  mainWindow = new BrowserWindow({\n    width: 1980,\n    height: 1080,\n    useContentSize: true,\n    webPreferences: {\n      webSecurity: false,\n      nodeIntegration: true\n    }\n  });\n  mainWindow.loadURL(WINURL);\n  mainWindow.webContents.on('did-finish-load', () => {\n     true ? mainWindow.webContents.openDevTools() : undefined;\n  });\n  mainWindow.on('closed', () => {\n    mainWindow = null;\n    app.quit();\n  });\n}\n\napp.on('ready', createWindow);\napp.on('window-all-closed', () => {\n  if (process.platform !== 'darwin') {\n    app.quit();\n  }\n});\napp.on('activate', () => {\n  if (mainWindow === null) {\n    createWindow();\n  }\n});\napp.on('window-all-closed', () => {\n  if (process.platform !== 'darwin') {\n    app.quit();\n  }\n});\n/* WEBPACK VAR INJECTION */}.call(this, \"src/main\"))\n\n//# sourceURL=webpack:///./src/main/index.js?");
+eval("let electron = __webpack_require__(/*! electron */ \"electron\");\n\nlet {\n  app,\n  BrowserWindow,\n  dialog\n} = electron;\n\nlet path = __webpack_require__(/*! path */ \"path\");\n\nconst WINURL =  true ? \"http://localhost:1900/index.html\" : undefined;\nlet mainWindow = null;\n\nfunction createWindow() {\n  mainWindow = new BrowserWindow({\n    width: 1980,\n    height: 1080,\n    useContentSize: true,\n    webPreferences: {\n      webSecurity: false,\n      nodeIntegration: true\n    }\n  });\n  mainWindow.loadURL(WINURL);\n  mainWindow.webContents.on('did-finish-load', () => {\n     true ? mainWindow.webContents.openDevTools() : undefined;\n  });\n  mainWindow.on('closed', () => {\n    mainWindow = null;\n    app.quit();\n  });\n}\n\napp.on('ready', createWindow);\napp.on('window-all-closed', () => {\n  if (process.platform !== 'darwin') {\n    app.quit();\n  }\n});\napp.on('activate', () => {\n  if (mainWindow === null) {\n    createWindow();\n  }\n});\napp.on('window-all-closed', () => {\n  if (process.platform !== 'darwin') {\n    app.quit();\n  }\n});\n\n//# sourceURL=webpack:///./src/main/index.js?");
 
 /***/ }),
 

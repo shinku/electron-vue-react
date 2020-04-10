@@ -11,7 +11,9 @@ const electron = require('electron');
 const path = require('path');
 const fs = require('fs');
 process.env.NODE_ENV ="development";
+
 console.log(process.env.NODE_ENV);
+
 function startRenderer(){
     
     return new Promise((res,jet)=>{
@@ -69,9 +71,11 @@ function startMain(){
            }
             //return;
             if(electronprocess && electronprocess.kill){
+               
                 process.kill(electronprocess.pid);
                 electronprocess = null
                 startElectron();
+              
             };
             res();
          })
@@ -84,16 +88,17 @@ function startElectron(){
         path.join(__dirname, '../dist/electron/index.js')]
         );
         electronprocess.stdout.on('data', data => {
-            console.log(data.toString(), 'blue')
-        })
+            console.log(data.toString())
+        })  
         electronprocess.stderr.on('data', data => {
-            console.log(data.toString(), 'red')
+            console.log(data.toString())
           })
-        
         electronprocess.on('close', () => {
            // process.exit()
+           process.exit()
         })
-}
+       
+};
 Promise.all([startRenderer(),startMain()]).
 then(()=>{
     startElectron();
