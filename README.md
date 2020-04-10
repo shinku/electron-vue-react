@@ -6,8 +6,9 @@
 renderer 中的electron 未通过挂载方式添加，只需通过
 ```javascript
 import electron from 'electron'
-的方式增加即可
 ```
+的方式增加即可
+
 #### 特点：
 + electron 项目热重载
 + 支持react/vue 以及混编（有点类似于微前端）
